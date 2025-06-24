@@ -1,0 +1,108 @@
+name: Update API Data
+
+on:
+  workflow_dispatch:
+    inputs:
+      notifications:
+        description: 'Обновить /notifications'
+        required: false
+        type: boolean
+        default: true
+      notifications_own:
+        description: 'Обновить /notifications_own'
+        required: false
+        type: boolean
+        default: true
+      news_arizona:
+        description: 'Обновить /news/arizona'
+        required: false
+        type: boolean
+        default: true
+      servers_desktop:
+        description: 'Обновить /servers/desktop'
+        required: false
+        type: boolean
+        default: true
+      desktop_news:
+        description: 'Обновить /desktop/news'
+        required: false
+        type: boolean
+        default: true
+      desktop_patches:
+        description: 'Обновить /desktop/patches'
+        required: false
+        type: boolean
+        default: true
+
+  schedule:
+    - cron: '*/5 * * * *'
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set paths
+        id: set-paths
+        run: |
+          echo "BASE_URL=download.arzfun.com/api/launcher" >> $GITHUB_ENV
+          echo "PATHS=/servers/desktop" >> $GITHUB_ENV
+
+      - name: Set manual paths
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          paths=""
+          if [[ "${{ github.event.inputs.notifications }}" == "true" ]]; then
+            paths="$paths /notifications"
+          fi
+          if [[ "${{ github.event.inputs.notifications_own }}" == "true" ]]; then
+            paths="$paths /notifications_own"
+          fi
+          if [[ "${{ github.event.inputs.news_arizona }}" == "true" ]]; then
+            paths="$paths /news/arizona"
+          fi
+          if [[ "${{ github.event.inputs.servers_desktop }}" == "true" ]]; then
+            paths="$paths /servers/desktop"
+          fi
+          if [[ "${{ github.event.inputs.desktop_news }}" == "true" ]]; then
+            paths="$paths /desktop/news"
+          fi
+          if [[ "${{ github.event.inputs.desktop_patches }}" == "true" ]]; then
+            paths="$paths /desktop/patches"
+          fi
+          echo "PATHS=$paths" >> $GITHUB_ENV
+
+      - name: Download and save data
+        run: |
+          for path in $PATHS; do
+            file="apis${path}"
+            file="${file#/}"
+            mkdir -p "$(dirname "$file")"
+            url="https://${BASE_URL}${path}"
+            success=0
+            for i in {1..6}; do
+              echo "Попытка $i: $url"
+              if curl -fsSL "$url" -o "$file"; then
+                echo "Успешно скачано: $file"
+                success=1
+                break
+              else
+                echo "Ошибка при скачивании, пробую снова..."
+                sleep 2
+              fi
+            done
+            if [ $success -eq 0 ]; then
+              echo "Не удалось скачать $url после 6 попыток"
+              exit 1
+            fi
+          done
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add apis/
+          git commit -m "Update API data" || echo "No changes to commit"
+          git push
