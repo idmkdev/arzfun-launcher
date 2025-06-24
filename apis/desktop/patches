@@ -1,0 +1,4 @@
+[
+    "document.head.insertAdjacentHTML(\"beforeend\", `<style>.theme-container[data-theme=\"arizona\"]{--global-accent:#8A2BE2;--global-bg-img:url('https://arzfun.hhos.net/assets/launcher/background.png?v=1');--global-bg-character:url('https://arzfun.hhos.net/assets/launcher/character.png?v=1');}.theme-container[data-theme=\"trilogy\"]{--global-accent:#c2dceb;--global-bg-img:url('https://arzfun.hhos.net/assets/launcher/trilogy_background.png?v=1');--global-bg-character:url('https://arzfun.hhos.net/assets/launcher/character.png?v=1');}</style>`);",
+    "document.querySelectorAll('.navigation-panel__logo-image').forEach(img=>{const v=document.createElement('video');v.src='https://arzfun.hhos.net/assets/logo_animated.webm?v=summer25';v.className=img.className;v.autoplay=1;v.loop=1;v.muted=1;v.playsInline=1;v.style.width='100%';v.style.height='auto';v.style.objectFit='contain';img.replaceWith(v);});"
+]

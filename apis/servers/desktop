@@ -1,0 +1,21 @@
+{
+    "arizona": [
+        {
+            "number": 3,
+            "name": "Arizona FUN",
+            "ip": "51.38.143.249",
+            "port": 7777,
+            "online": "13",
+            "maxplayers": 200,
+            "password": false,
+            "vk": "https://vk.com/arzfun",
+            "tg": "https://t.me/arzfun",
+            "inst": "https://instagram.com/kuril.travu",
+            "icon": "https://arzfun.hhos.net/desktop/resources/fun.png",
+            "plotPoints": [],
+            "recomend": true,
+            "donateMultiplier": 0,
+            "experienceMultiplier": 4
+        }
+    ]
+}
