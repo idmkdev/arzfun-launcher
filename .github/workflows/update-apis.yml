@@ -34,8 +34,8 @@ on:
         type: boolean
         default: true
 
-  schedule:
-    - cron: '*/5 * * * *'
+  #schedule:
+  #  - cron: '*/5 * * * *'
 
 jobs:
   update:
