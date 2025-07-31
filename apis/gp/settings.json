@@ -1,0 +1,61 @@
+{
+    "isAppWorking": true,
+    "welcomeMessage": null,
+    "gameLink": "https://arzfun.com/mobile",
+    "gameActivity": ["com.arizonafun.game", "com.arizona.launcher.MainEntrench"],
+    "isGameAvailable": true,
+    "helpLink": "https://t.me/arizonafunhelp_bot",
+    "apiSkins": "https://api.arztools.tech/tools/arizona/skins.json",
+    "isSkinsAvailable": true,
+    "apiVehicles": "https://api.arztools.tech/tools/arizona/vehicles.json",
+    "isVehiclesAvailable": true,
+    "apiPhotoSkins": "https://pc-cdn-az-ins.dev.arizona.games/resource/frontend/inventory/skins/512/",
+    "apiPhotoVehicles": "https://pc-cdn-az-ins.dev.arizona.games/resource/frontend/inventory/vehicles/512/",
+    "apiOnline": "https://raw.githubusercontent.com/idmkdev/arzfun-launcher/refs/heads/main/apis/counter",
+    "apiNotifications": "https://arzfun.hhos.net/api/launcher/news/arizona",
+    "isLinksAvailable": true,
+    "projectLinks": [
+    {
+      "name": "Топ игроков ARZFUN",
+      "imageUrl": "https://arzfun.hhos.net/gp/assets/top.png",
+      "url": "https://arzfun.com/stats/",
+      "canOpenInBrowser": false,
+      "onlyBrowser": false
+    },
+    {
+      "name": "Магазин",
+      "imageUrl": "https://arzfun.hhos.net/gp/assets/money.png",
+      "url": "https://arzfun.com/shop",
+      "canOpenInBrowser": true,
+      "onlyBrowser": false
+    },
+    {
+      "name": "Форум",
+      "imageUrl": "https://arzfun.hhos.net/gp/assets/logo.png",
+      "url": "https://forum.arzfun.com",
+      "canOpenInBrowser": true,
+      "onlyBrowser": false
+    },
+    {
+      "name": "Сайт",
+      "imageUrl": "https://arzfun.hhos.net/gp/assets/logo.png",
+      "url": "https://arzfun.com",
+      "canOpenInBrowser": true,
+      "onlyBrowser": false
+    },
+    {
+      "name": "Телеграм канал",
+      "imageUrl": "https://arzfun.hhos.net/gp/assets/telegram.png",
+      "url": "https://t.me/arizonamobilefun",
+      "canOpenInBrowser": true,
+      "onlyBrowser": true
+    },
+    {
+      "name": "Техническая поддержка",
+      "imageUrl": "https://arzfun.hhos.net/gp/assets/telegram.png",
+      "url": "https://t.me/arizonafunhelp_bot",
+      "canOpenInBrowser": true,
+      "onlyBrowser": true
+    }
+  ]
+}
