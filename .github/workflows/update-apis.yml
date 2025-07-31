@@ -33,6 +33,11 @@ on:
         required: false
         type: boolean
         default: true
+      gp_settings:
+        description: 'Обновить /gp/settings.json'
+        required: false
+        type: boolean
+        default: true
 
 jobs:
   update:
@@ -68,6 +73,9 @@ jobs:
           fi
           if [[ "${{ github.event.inputs.desktop_patches }}" == "true" ]]; then
             paths="$paths /desktop/patches"
+          fi
+          if [[ "${{ github.event.inputs.gp_settings }}" == "true" ]]; then
+            paths="$paths /gp/settings.json"
           fi
           echo "PATHS=$paths" >> $GITHUB_ENV
 
